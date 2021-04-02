@@ -17,26 +17,22 @@ public class Login {
 
     @When("^I enter user name as \"(.*?)\"$")
     public void i_enter_user_name_as(String userName) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        loginHelper.enter_user_name_as(userName);
     }
 
     @When("^I enter password as \"(.*?)\"$")
     public void i_enter_password_as(String password) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        loginHelper.enter_password_as(password);
     }
 
     @When("^I click login button$")
     public void i_click_login_button() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        loginHelper.click_login_button();
     }
 
     @Then("^Login should be \"(.*?)\"$")
-    public void login_should_be(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void login_should_be(String result) throws Throwable {
+        loginHelper.login_should_be(result);
     }
 
 }
