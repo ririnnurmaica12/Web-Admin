@@ -1,6 +1,5 @@
 package com.web.javawebadmin;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -10,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Beranda {
     WebDriver driver = new ChromeDriver();
     LoginHelper loginHelper = new LoginHelper(driver);
+    BerandaHelper berandaHelper = new BerandaHelper(driver);
 
     @Given("^I is logedin use \"(.*?)\" and \"(.*?)\"$")
     public void i_is_logedin_use_and(String userName, String password) throws Throwable {
@@ -19,15 +19,14 @@ public class Beranda {
         loginHelper.click_login_button();
     }
 
-    @When("^I access beranda page$")
-    public void i_access_beranda_page() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @When("^I access beranda page \"(.*?)\"$")
+    public void i_access_beranda_page(String result) throws Throwable {
+        berandaHelper.access_beranda_page(result);
     }
 
-    @Then("^I view data covid-(\\d+)$")
-    public void i_view_data_covid(int arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Then("^I view data covid \"(.*?)\"$")
+    public void i_view_data_covid(String result) throws Throwable {
+        berandaHelper.view_data_covid(result);
     }
+
 }

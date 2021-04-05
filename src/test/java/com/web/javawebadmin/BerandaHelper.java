@@ -1,13 +1,32 @@
 package com.web.javawebadmin;
 
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
 public class BerandaHelper {
+    WebDriver driver;
 
+    public BerandaHelper(WebDriver driver) {
 
-    public void access_beranda_page() throws Throwable {
-
+        this.driver = driver;
     }
 
-    public void view_data_covid(int arg1) throws Throwable {
+    public void access_beranda_page(String result) throws Throwable {
+       String url = this.driver.getCurrentUrl();
+        if(result.equalsIgnoreCase("Success")){
+            Assert.assertEquals("http://localhost:8080/home/getDataCovid", url);
+        }else{
+            Assert.assertNotEquals("http://localhost:8080/home/getDataCovid", url);
+        }
+    }
 
+    public void view_data_covid(String result) throws Throwable {
+        String text= this.driver.findElement(By.xpath("//h4[@class=\"card-title mb-0\"]")).getText();
+        if(result.equalsIgnoreCase("Success")){
+            Assert.assertEquals("Covid-19", text);
+        }else{
+            Assert.assertNotEquals("Covid-19", text);
+        }
     }
 }
