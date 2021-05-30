@@ -11,7 +11,7 @@ public class LogoutHelper {
         this.driver = driver;
     }
     public void click_link_logout() throws Throwable {
-        this.driver.findElement(By.xpath("//a[contains(@href, \"/admin/login\")]")).click();
+        this.driver.findElement(By.xpath("//a[@href='/admin/login']")).click();
     }
 
     public void logout_should_be(String result) throws Throwable {

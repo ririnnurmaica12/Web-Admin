@@ -26,17 +26,23 @@ public class UserController {
     @PostMapping(path = "/register", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
             produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
-    public String postRegister(@RequestParam Map<String, Object> payload) {
+    public String postRegister(@RequestParam Map<String, Object> dataUser) {
+        String returnPage = "";
+            if(!dataUser.get("username").equals("") && !dataUser.get("password").equals("")){
+                User user = new User(
+                        (String) dataUser.get("username"),
+                        (String) dataUser.get("email"),
+                        BCrypt.hashpw((String) dataUser.get("password"), BCrypt.gensalt()),
+                        (String) dataUser.get("firstname"),
+                        (String) dataUser.get("lastname"),
+                        (String) dataUser.get("address"));
+                userRepository.save(user);
+                returnPage= "login";
+            }else{
+                returnPage= "register";
+            }
 
-        User user = new User(
-                (String) payload.get("username"),
-                (String) payload.get("email"),
-                 BCrypt.hashpw((String) payload.get("password"), BCrypt.gensalt()),
-                (String) payload.get("firstname"),
-                (String) payload.get("lastname"),
-                (String) payload.get("address"));
-        userRepository.save(user);
-        return "login";
+       return returnPage;
     }
 
 

@@ -4,15 +4,14 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class BerandaHelper {
+public class HomeHelper {
     WebDriver driver;
 
-    public BerandaHelper(WebDriver driver) {
-
+    public HomeHelper(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void access_beranda_page(String result) throws Throwable {
+    public void access_home_page(String result) throws Throwable {
        String url = this.driver.getCurrentUrl();
         if(result.equalsIgnoreCase("Success")){
             Assert.assertEquals("http://localhost:8080/home/getDataCovid", url);

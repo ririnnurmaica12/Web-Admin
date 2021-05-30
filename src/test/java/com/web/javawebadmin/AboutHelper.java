@@ -12,7 +12,7 @@ public class AboutHelper {
     }
 
     public void click_button_about() {
-        this.driver.findElement(By.xpath("//a[2]")).click();
+        this.driver.findElement(By.xpath("//a[@href='/admin/about']")).click();
     }
 
     public void about_page_should_be(String result) throws Throwable {
